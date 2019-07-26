@@ -7,7 +7,7 @@ function createUserCard(userInfo) {
 
         <div class="card__userDetails">
           <h1 class="userDetails__username--centered">${userInfo.login}</h1>
-          <button onclick="loadRepoPage">Repositories</button>
+          <button onclick="loadRepoPage()">Repositories</button>
           <button onclick=" window.open('${
             userInfo.html_url
           }', '_blank')"  >Full Profile</button>
@@ -16,7 +16,7 @@ function createUserCard(userInfo) {
   return card;
 }
 
-async function loadRepoPage(e) {
+function loadRepoPage(e) {
   //   const url = `https://api.github.com/search/users/${usermame}/repos`;
   //   let repos = await fetch(url);
   //   repos = repos.json();
@@ -35,6 +35,7 @@ window.onload = () => {
     users = await fetch(
       `https://api.github.com/search/users?q=${input_search.value}`
     );
+
     users = await users.json();
     const usersInfo = users.items;
     for (let i = 0; i < usersInfo.length; i++) {
