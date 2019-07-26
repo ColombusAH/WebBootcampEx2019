@@ -1,0 +1,70 @@
+body {
+  padding: 2rem;
+}
+header {
+  border: 2px solid black;
+  margin-bottom: 2em;
+}
+h1 {
+  margin-left: 1em;
+}
+
+.mainPage {
+  border: 2px solid black;
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.mainPage__searchPanel {
+  width: 100%;
+}
+
+.searchPanel__inputSearch {
+  height: 2.3em;
+  margin-bottom: 2em;
+}
+
+.searchPanel__btnSearch {
+  margin-left: 0.5em;
+  height: 2.5em;
+  width: 9em;
+  border-radius: 0.3em;
+  border-color: black;
+  font-size: 0.8em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mainPage__card {
+  display: flex;
+  justify-content: space-evenly;
+  width: 45%;
+  border: 2px solid black;
+  height: 15em;
+  padding: 1em;
+  margin-bottom: 0.5em;
+}
+
+.card__userDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.card__userImage {
+  height: 100%;
+}
+
+.userDetails__username--centered {
+  text-align: center;
+}
+
+.card__userDetails button {
+  height: 2.5em;
+  border-radius: 0.3em;
+}
+
+.userRepo {
+  display: none;
+}
