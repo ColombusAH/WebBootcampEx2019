@@ -1,3 +1,31 @@
+const search_btn = document.querySelector(".searchPanel__btnSearch");
+
+async function loadCards() {
+  const main_page = document.querySelector(".mainPage");
+  const input_search = document.querySelector(".searchPanel__inputSearch");
+  console.log(input_search.value);
+  let users;
+  users = await fetch(
+    `https://api.github.com/search/users?q=${input_search.value}`
+  );
+
+  users = await users.json();
+  const usersInfo = users.items;
+
+  const cards = document.querySelectorAll(".mainPage__card");
+  console.log(usersInfo);
+  cards.forEach(card => {
+    main_page.removeChild(card);
+  });
+
+  for (let i = 0; i < usersInfo.length; i++) {
+    const user = usersInfo[i];
+    const user_card = createUserCard(user);
+    main_page.innerHTML += user_card;
+  }
+  console.log("finish");
+}
+
 function createUserCard(userInfo) {
   const card = `<div class="mainPage__card">
         <img
@@ -24,27 +52,6 @@ function loadRepoPage(e) {
   //   console.log(repos);
   console.log("dfdf");
 }
-
-window.onload = () => {
-  const search_btn = document.querySelector(".searchPanel__btnSearch");
-  const main_page = document.querySelector(".mainPage");
-  const input_search = document.querySelector(".searchPanel__inputSearch");
-
-  search_btn.addEventListener("click", async () => {
-    let users;
-    users = await fetch(
-      `https://api.github.com/search/users?q=${input_search.value}`
-    );
-
-    users = await users.json();
-    const usersInfo = users.items;
-    for (let i = 0; i < usersInfo.length; i++) {
-      const user = usersInfo[i];
-      const user_card = createUserCard(user);
-      main_page.innerHTML += user_card;
-    }
-  });
-};
 
 function toggle(elclass) {
   var x = document.querySelector(elname);
